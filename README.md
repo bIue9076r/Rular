@@ -45,7 +45,7 @@ The basics are pretty much the same from lua.
 this is where it starts to get freaky  
 the commands listed in this section are harder to grasp than the basic commands
 
-<a name="il1">## echo</a>
+## <a name="il1">echo</a>
 
 echo is the Rular version of `print()`. it takes the input and converts it to a string if you want to print anything other than a string use the standard `print()` function.
 
