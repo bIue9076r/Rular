@@ -6,11 +6,26 @@
 
 what? where you expecting a list of how its better than regular progaming langauges.
 
+---
+
+## Table of contents
+
+[Usage](#l1)
+
+[Custom Commands](#l2)
+
++ [echo](#il1)
++ [Commenting](#il2)
++ [Loading commands](#il3)
++ [Booleans](#il4)
++ [Loops](#il5)
+
+
 ## <a name="l1">Usage:</a>
 
 The basics are pretty much the same from lua.
 
-**variable decleration:** 
+**variable declaration:** 
 + `x = 10`
 + `local y`
 
@@ -28,11 +43,11 @@ The basics are pretty much the same from lua.
 # <a name="l2">Different Commands</a>
 
 this is where it starts to get freaky  
-the commands listed in this section are  harder to grasp than the basic commands
+the commands listed in this section are harder to grasp than the basic commands
 
-## echo
+<a name="il1">## echo</a>
 
-echo is the Rular version of `print()`. it takes the input and converts it to a string if you want to print anything other than a string use the standerd `print()` function.
+echo is the Rular version of `print()`. it takes the input and converts it to a string if you want to print anything other than a string use the standard `print()` function.
 
 **Usage**
 >```lua
@@ -41,7 +56,7 @@ echo is the Rular version of `print()`. it takes the input and converts it to a 
 
 ---
 
-## Commenting
+## <a name="il2"> Commenting</a>
 
 The Comment function isnt really a comment feature as the program doesnt fully ignore the text instead it saves it to a system log so you can comment out explanations and use it as storage.
 
@@ -56,9 +71,9 @@ The Comment function isnt really a comment feature as the program doesnt fully i
 
 ---
 
-## Command Table and loading Commands 
+## <a name="il3">Command Table and loading Commands </a>
 
-The Rular language uses a global table to save all functions. To use any thing extra like loops you need to learn how to use the `loadCmd()` command.
+The Rular language uses a global table to save all functions. To use any thing extra like loops you need to learn how to use the `loadcmd()` command.
 
 **Usage**
 
@@ -79,7 +94,7 @@ after this you need to call the command table
 >_cmd.example = example()
 >```
 
-Once you have updated the command you need to load it. The way that Rular handels command updates is by loading it before its called
+Once you have updated the command you need to load it. The way that Rular handles command updates is by loading it before its called
 
 >```lua
 >function example()
@@ -88,16 +103,16 @@ Once you have updated the command you need to load it. The way that Rular handel
 >
 >_cmd.example = example()
 >
->loadCmd(example)
+>loadcmd(example)
 >```
 
 this will set the current command to be excecuted to be what was inputed. this is usefull for loops as this is the only way to change what they run.
 
 ---
 
-## Boolean Handeling
+## <a name="il4">Boolean Handling</a>
 
-Rular handels Booleans in a special way. it uses a unique function to check Booleans.
+Rular handles Booleans in a special way. it uses a unique function to check Booleans.
 
 >```lua
 >print(bool(TRUE))
@@ -107,7 +122,7 @@ all this does it that it returns the value of the input. theres not much needed 
 
 ---
 
-## Loops
+## <a name="il5">Loops</a>
 
 this is it the biggest section of them all. they way Loops work in Rular are very confusing, if you understand how they work they become really easy to use.
 
