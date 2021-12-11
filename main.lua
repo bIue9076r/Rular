@@ -1,71 +1,82 @@
 --[[====Rular Commands====]]-- 
-
-_cmd = {}
-_comments = {}
-_SystemLog = {}
-_cmdr = 0
 TRUE = true
 FALSE = false
 NIL = nil
 
-function _(comment)
-	local cm = tostring(comment)
-	table.insert(_comments, cm)
-end
+function _(...)end
 
-function loadcmd(cm)
-	table.insert(_cmd, cm)
-	_cmdr = _cmdr + 1
-	table.insert(_SystemLog, "inserted command")
-	table.insert(_SystemLog, "current repitition: ".._cmdr)
-end
-
-function echo(text)
-	ptext = tostring(text)
-	print(ptext)
+function echo(...)
+	print(...)
 end
 
 function bool(cond)
 	return cond
 end
 
-function is(cond)
+function notbool(cond)
+	return not cond
+end
+
+function is(cond,callback,...)
+	assert(type(cond) == "boolean", "conditional is not a boolean")
+	assert(type(callback) == "function","No function inputed")
 	if cond == true then
-		_cmd[_cmdr]()
-	else
-		error("CONDITIONAL is not a TRUE value")
+		callback(...)
 	end
 end
 
-function will(cond)
-	if cond == true or cond == false then
-		while cond == true do
-			_cmd[_cmdr]()
-		end
-	else
-		error("CONDITIONAL is not a boolean", 3)
+function isnot(cond,callback,...)
+	assert(type(cond) == "boolean", "conditional is not a boolean")
+	assert(type(callback) == "function","No function inputed")
+	if not cond == true then
+		callback(...)
 	end
 end
 
-function dor(mn,mx,it)
-	if it > mx then
-		error("ITERATION value is greater than MAX value", 3)
-	else
-		for i=mn,mx,it do
-			_cmd[_cmdr]()
-		end
+function will(cond,callback,...)
+	assert(type(cond) == "boolean", "conditional is not a boolean")
+	assert(type(callback) == "function","No function inputed")
+	while cond == true do
+		callback(...)
 	end
 end
 
-function unless(cond)
-	if cond == true or cond == false then
-		repeat
-		_cmd[_cmdr]()
-		until cond == true
-	else
-		error("CONDITIONAL is not a boolean", 3)
+function willnot(cond,callback,...)
+	assert(type(cond) == "boolean", "conditional is not a boolean")
+	assert(type(callback) == "function","No function inputed")
+	while cond == false do
+		callback(...)
 	end
+end
+
+function dofor(mn,mx,it,callback,...)
+print(it,mx+mn)
+	assert(type(mn) == "number","Minimum is not a number")
+	assert(type(mx) == "number","Maximum is not a number")
+	assert(type(it) == "number","Iteration is not a number")
+	assert(it < (mx + mn), "Iteration grater than the max value")
+	assert(type(callback) == "function","No function inputed")
+
+	for i=mn,mx,it do
+		callback(...)
+	end
+end
+
+function unless(cond,callback,...)
+	assert(type(cond) == "boolean", "conditional is not a boolean")
+	assert(type(callback) == "function","No function inputed")
+	repeat
+		callback(...)
+	until cond == true
+end
+
+function unlessnot(cond,callback,...)
+	assert(type(cond) == "boolean", "conditional is not a boolean")
+	assert(type(callback) == "function","No function inputed")
+	repeat
+		callback(...)
+	until cond == false
 end
 
 -----------------------------
-dofile("Rular.rular")
+dofile("Rular.rla")

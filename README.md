@@ -58,7 +58,6 @@ echo is the Rular version of `print()`. it takes the input and converts it to a 
 
 ## <a name="il2"> Commenting</a>
 
-The Comment function isnt really a comment feature as the program doesnt fully ignore the text instead it saves it to a system log so you can comment out explanations and use it as storage.
 
 **Usage**
 >```lua
@@ -68,45 +67,6 @@ The Comment function isnt really a comment feature as the program doesnt fully i
 >Multiple line comment
 >_([[input]])
 >```
-
----
-
-## <a name="il3">Command Table and loading Commands </a>
-
-The Rular language uses a global table to save all functions. To use any thing extra like loops you need to learn how to use the `loadcmd()` command.
-
-**Usage**
-
-you need to first create a function
->```lua
->function example()
->	...
->end
->```
-
-after this you need to call the command table 
-
->```lua
->function example()
->	...
->end
->
->_cmd.example = example()
->```
-
-Once you have updated the command you need to load it. The way that Rular handles command updates is by loading it before its called
-
->```lua
->function example()
->	...
->end
->
->_cmd.example = example()
->
->loadcmd(example)
->```
-
-this will set the current command to be excecuted to be what was inputed. this is usefull for loops as this is the only way to change what they run.
 
 ---
 
@@ -124,30 +84,36 @@ all this does it that it returns the value of the input. theres not much needed 
 
 ## <a name="il5">Loops</a>
 
-this is it the biggest section of them all. they way Loops work in Rular are very confusing, if you understand how they work they become really easy to use.
+this is it the biggest section of them all. if you understand how loops work they become really easy to use.
 
 the easiest loop to grasp is the **is** loop
 >```lua
->function example()
+>function example(...)
 >...
 >end
 >
->_cmd.example = example()
->loadCmd(example)
->is(bool(TRUE))
+>is(bool(TRUE),example,...)
 >```
 
-messy right i wasnt kidding when i said loops where confusing.
+#### Not variant
 
-moving on to the **dor** loop
 >```lua
->function example()
+>function example(...)
 >...
 >end
 >
->_cmd.example = example()
->loadCmd(example)
->dor(1,10,2)
+>isnot(bool(FALSE),example,...)
+>```
+
+opposite of the regular is loop
+
+moving on to the **dofor** loop
+>```lua
+>function example(...)
+>...
+>end
+>
+>dofor(1,10,2,example,...)
 >```
 
 this loop does the current command for every 2 in 10 and 1.  
@@ -156,28 +122,48 @@ this loop does the current command for every 2 in 10 and 1.
 the next loop to learn is the **will** loop
 
 >```lua
->function example()
+>function example(...)
 >...
 >end
 >
->_cmd.example = example()
->loadCmd(example)
->will(bool(TRUE))
+>will(bool(TRUE),example,...)
 >```
 
 this loop does the current command while the Boolean returns TRUE
 
-and finally the last loop we have to understand is the **unless** loop
+#### Not variant
 
 >```lua
->function example()
+>function example(...)
 >...
 >end
 >
->_cmd.example = example()
->loadCmd(example)
->unless(bool(TRUE))
+>willnot(bool(FALSE),example,...)
 >```
+
+dont get to confused by the name its just the opposite of a will loop
+
+and finally the last loop we have to understand is the **unless** loop
+
+>```lua
+>function example(...)
+>...
+>end
+>
+>unless(bool(TRUE),example,...)
+>```
+
+#### Not variant
+
+>```lua
+>function example(...)
+>...
+>end
+>
+>unlessnot(bool(TRUE),example,...)
+>```
+
+same thing as before the names are just the opposite of their regular names.
 
 if you understand the loops above this should be a piece of cake but if you dont this loop runs the current command unless the Boolean returns TRUE.
 
