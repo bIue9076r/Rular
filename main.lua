@@ -50,7 +50,6 @@ function willnot(cond,callback,...)
 end
 
 function dofor(mn,mx,it,callback,...)
-print(it,mx+mn)
 	assert(type(mn) == "number","Minimum is not a number")
 	assert(type(mx) == "number","Maximum is not a number")
 	assert(type(it) == "number","Iteration is not a number")
